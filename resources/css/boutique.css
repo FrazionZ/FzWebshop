@@ -1,0 +1,269 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--black-4);
+    padding: 30px 60px;
+}
+body.overflow-hidden {
+    overflow-x: hidden;
+    overflow-y: overlay;
+}
+.btn {
+    font-family: 'Poppins';
+}
+.boutique .pres-item .back {
+    background: var(--color-2);
+    color: white;
+    padding: 1rem 1.2rem;
+    border-radius: 4rem;
+    position: absolute;
+    top: -20px;
+    left: -25px;
+    cursor: pointer;
+    z-index: 99;
+}
+.boutique .pres-item .back > i, svg {
+    cursor: pointer;
+    font-size: 2rem;
+}
+.boutique .head  {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.boutique .head ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+.boutique .head li {
+    background: var(--black-1);
+    text-align: center;
+    border-radius: 8px;
+}
+.boutique .head li a {
+    color: white;
+    font-size: 24px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    padding: 15px 30px;
+    display: block;
+}
+.boutique .head .user  {
+    display: flex;
+    gap: 15px;
+}
+.boutique .head .user .avatar {
+    border-radius: 8px;
+}
+.boutique .head .user .infos {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    color: white;
+    text-align: right;
+    position: relative;
+    top: 0px;
+}
+.boutique .head .user .dropdown {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: transparent;
+    transition: 0.2s all ease-in-out;
+    padding: 20px !important;
+    border-radius: 12px !important;
+}
+.boutique .head .user .dropdown:hover {
+    background: var(--black-2);
+}
+.boutique .head .user .infos .money {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+.boutique .head .user .infos .money #pbs{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: default;
+}
+.boutique .head .user .infos .money #coins {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: default;
+}
+.boutique .main {
+    padding-top: 60px;
+}
+.boutique .main .list {
+    display: flex;
+    gap: 120px;
+    flex-direction: column;
+}
+.boutique .main .list .categorie {
+    padding: 10px 0;
+}
+.boutique .main .list .categorie .card.infos {
+    width: 672px;
+    padding: 10px 30px;
+    font-size: 32px;
+    color: white;
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-weight: 700;
+    background: var(--black-1);
+}
+.boutique .main .list .categorie .products {
+    display: flex;
+    gap: 30px;
+    padding-top: 30px;
+    flex-wrap: wrap;
+}
+.boutique .main .list .categorie .products .card {
+    width: 320px;
+    height: 420px;
+    border-radius: 15px;
+    border: inset 0px solid transparent;
+    outline: 0px solid #ffffff;
+    transition: 0.1s outline ease-in-out;
+    overflow: hidden;
+    padding: 0;
+}
+.boutique .main .list .categorie .products .card .items {
+    height: 100%;
+    background-size: cover;
+    background-position: center bottom;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 30px;
+    padding: 15px;
+    border-radius: 15px;
+    color: white;
+}
+.boutique .main .list .categorie .products .card:hover {
+    outline: 10px solid #FFFFFF;
+}
+.boutique .main .list .categorie .products .card .items .infos{
+    display: flex;
+    flex-direction: column;
+}
+.boutique .main .list .categorie .products .card .items .infos .categ_name{
+    font-size: 24px;
+    color: white;
+}
+.boutique .main .list .categorie .products .card .items .infos .package_name{
+    font-size: 32px;
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+.boutique .main .list .categorie .products .card .items .prices span{
+    font-size: 18px;
+}
+.boutique .main .list .categorie .products .card .items .prices {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+}
+.boutique .main .pres-item {
+    width: 1300px;
+    padding: 80px 80px 80px 20px;
+}
+.boutique .main .pres-item .card {
+    height: 600px;
+    width: 1140px;
+    position: relative;
+}
+.boutique .main .content {
+    padding: 45px;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+.boutique .card {
+    color: white;
+    border-radius: 30px;
+    padding: 30px;
+}
+.boutique .main .pres-item .card .item-name {
+    text-align: center;
+    font-size: 40px;
+    display: block;
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+.boutique .main .pres-item .card .item-description {
+    margin-bottom: 6rem;
+    font-size: 24px;
+}
+.boutique .main .pres-item .card .action {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    bottom: -54px;
+    left: 0;
+    right: 0;
+}
+.boutique .main .pres-item .card .action .offline {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.boutique .main .pres-item .card .action .price {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+.boutique .main .pres-item .card .action .price span {
+    font-size: 24px;
+}
+.boutique .main .pres-item .card .action .price a {
+    width: 400px;
+    font-family: 'Poppins';
+    text-align: center;
+    font-size: 24px;
+}
+.boutique .main .pres-item .card .action .price a.pbs{
+    background: #459803;
+    color: #FFFFFF !important;
+}
+.boutique .main .column-thumb {
+    position: fixed;
+    z-index: -1;
+    bottom: 0rem;
+    overflow: hidden;
+    right: -240px;
+}
+.boutique .main .column-thumb img {
+    width: 1000px;
+}
+.table thead th {
+    color: white;
+}
+.viga {
+    font-family: 'Viga', sans-serif !important;
+}
+.br-15 {
+    border-radius: 15px !important;
+}
+.card .subcontent {
+    background: var(--black-3);
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 100%;
+    border-radius: 15px;
+    padding: 15px;
+}
+.card .content {
+    padding: 25px !important;
+    width: fit-content;
+}
