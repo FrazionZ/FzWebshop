@@ -26,6 +26,7 @@ const customStyles = {
     },
 };
 
+
 const itemVariants = {
     open: {
         opacity: 1,
