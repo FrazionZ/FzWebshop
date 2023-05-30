@@ -8,8 +8,6 @@ export default function Home({ auth }) {
     const categories = props.shop.categories
     const items = props.items
 
-    console.log(props)
-
     return (
         <Layout>
             <Head title="Accueil" />
@@ -28,7 +26,7 @@ export default function Home({ auth }) {
                                     {items.map((item, itindex) => {
 
                                         const slug = item.name.toLowerCase()
-                                        let colors = item.colors.split(':')
+                                        let colors = [item.color1, item.color2]
                                         {
                                             if (item.category_id == category.id)
                                                 return (

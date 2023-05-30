@@ -10,5 +10,5 @@ class ShopCategories extends Model
     use HasFactory;
 
     protected $connection = "faction";
-    protected $table = "shop__categories";
+    protected $table = "economy__shop_type";
 }
