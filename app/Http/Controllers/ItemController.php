@@ -7,6 +7,7 @@ use App\Models\ShopCategories;
 use App\Models\ShopHistory;
 use App\Models\ShopItems;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ItemController extends Controller
@@ -83,19 +84,18 @@ class ItemController extends Controller
     }
 
     public function sendSocketServer($history){
-        /*$client = new \WebSocket\Client("ws://194.9.172.246:4667/v1/ws/shop/claim", [
+        $client = new \WebSocket\Client("ws://194.9.172.246:4667/v1/ws/shop/claim", [
             'headers' => [
                 'Sec-WebSocket-Version' => '13',
                 'origin' => '*',
                 'key' => "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
             ],
         ]);
-        $history->fzProfile = getFZProfile();
+        $history->fzProfile = FactionProfile::select('uuid', 'money')->where('uuid', '=', Auth::user()->uuid)->first();
+        $history->fzProfile->money = intval($history->fzProfile->money);
         $client->send(json_encode($history));
         $client->receive();
-        $client->close();*/
-        
-        dd(json_encode($history));
+        $client->close();
     }
 
 
