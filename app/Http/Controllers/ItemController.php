@@ -17,7 +17,7 @@ class ItemController extends Controller
     public function index(Request $request, $slug, $itemID){
         $category = ShopCategories::where('name', 'like', '%'.$slug.'%')->where('is_enable', 1)->first();
         if($category == null) abort(404);
-        $item = ShopItems::where('id', '=', $itemID)->where('is_enable', 1)->where('is_deleted', 0)->where('category_id', '=', $category->id)->first();
+        $item = ShopItems::where('id', '=', $itemID)->where('is_enable', 1)->where('is_deleted', 0)->where('shop_type_id', '=', $category->id)->first();
         if($item == null) abort(404);
         $factionProfile = FactionProfile::where('uuid', $request->user()->uuid)->first();
         return Inertia::render('Item/Show', [
@@ -35,7 +35,7 @@ class ItemController extends Controller
         $payment = $request->input('type');
         $item = ShopItems::where('id', '=', $request->input('item_id'))->where('is_enable', 1)->where('is_deleted', 0)->first();
         if($item == null) return redirect()->back()->with("status", $this->toastResponse('error', 'Cette article semble introuvable'));
-        $category = ShopCategories::where('id', $item->category_id)->where('is_enable', 1)->first();
+        $category = ShopCategories::where('id', $item->shop_type_id)->where('is_enable', 1)->first();
         if($category == null)  return redirect()->back()->with("status", $this->toastResponse('error', 'Cette article semble introuvable'));
         if($item->multiple_buy == 0 && ShopHistory::where('uuid', '=', $userAuth->uuid)->where('item_id', '=', $item->id)->first() !== null)
             return redirect()->back()->with("status", $this->toastResponse('error', 'Vous ne pouvez acheter qu\'une seul fois cet article'));
