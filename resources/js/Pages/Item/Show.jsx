@@ -1,6 +1,7 @@
 import Layout from "@/Layouts/Layout";
 import { Head, Link, router } from "@inertiajs/react";
 import { FaArrowLeft, FaExclamationTriangle } from 'react-icons/fa'
+import ConfirmBuy from '@/Components/Modals/ConfirmBuy'
 
 export default function ItemShow(props) {
 
@@ -9,13 +10,6 @@ export default function ItemShow(props) {
     const item = props.item
     const factionProfile = props.factionProfile
 
-    async function buyPost(data) {
-        router.post(route('buy'), data, {
-            onSuccess: (result) => {
-                console.log(result)
-            }
-        })
-    }
 
     return (
         <Layout>
@@ -42,7 +36,7 @@ export default function ItemShow(props) {
                                                 { item.price_coins > -1 && item.price_coins > 0 &&
                                                     <div className="price">
                                                         <span className="text">{ item.price_coins } Coins</span>
-                                                        <a href="#" className="btn btn-primary btnBuy" onClick={() => buyPost({ type: "coins", item_id: item.id }) }>Acheter</a>
+                                                        <ConfirmBuy item={item} type="coins" />
                                                     </div>
                                                 }
                                             </>
@@ -52,7 +46,7 @@ export default function ItemShow(props) {
                                                 { item.price_pbs > -1 && item.price_pbs > 0 &&
                                                     <div className="price">
                                                         <span className="text">{ item.price_pbs } Points Boutique</span>
-                                                        <a href="#" className="btn btn-primary pbs btnBuy" onClick={() => buyPost({ type: "pbs", item_id: item.id }) }>Acheter</a>
+                                                        <ConfirmBuy item={item} type="pbs" />
                                                     </div>
                                                 }
                                             </>

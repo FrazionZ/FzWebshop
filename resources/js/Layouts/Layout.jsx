@@ -8,6 +8,7 @@ import IconCoins from '../../assets/img/icon_coins.svg'
 export default function Layout({ children }) {
 
     const props = usePage().props;
+    console.log(props)
     const user = props.auth.user;
     const factionProfile = props.auth.factionProfile;
     const categories = props.shop.categories

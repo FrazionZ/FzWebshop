@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shop__items', function(Blueprint $table) {
+        Schema::connection('faction')->create('shop__items', function(Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->double('price_pbs')->default(0)->nullable();

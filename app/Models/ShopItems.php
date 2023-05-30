@@ -9,5 +9,6 @@ class ShopItems extends Model
 {
     use HasFactory;
     
+    protected $connection = "faction";
     protected $table = "shop__items";
 }

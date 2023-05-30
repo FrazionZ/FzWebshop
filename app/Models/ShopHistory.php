@@ -9,6 +9,8 @@ class ShopHistory extends Model
 {
     use HasFactory;
 
+
+    protected $connection = "faction";
     protected $table = "shop__histories";
 
     protected $fillable = [

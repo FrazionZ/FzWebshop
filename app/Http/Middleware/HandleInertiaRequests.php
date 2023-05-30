@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\FactionProfile;
 use App\Models\ShopCategories;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -37,7 +38,7 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
-                'factionProfile' => json_decode(@file_get_contents('https://api.frazionz.net/faction/profile/'.$request->user()->id), true)
+                'factionProfile' => ($request->user() !== null ? FactionProfile::where('uuid', $request->user()->uuid)->first() : null)
             ],
             'shop' => [
                 'categories' => $shopCategories

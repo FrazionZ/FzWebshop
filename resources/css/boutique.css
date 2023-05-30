@@ -2,7 +2,7 @@ html {
     scroll-behavior: smooth;
 }
 body {
-    background-color: var(--black-4);
+    background-color: var(--fzbg-4);
     padding: 30px 60px;
 }
 body.overflow-hidden {
@@ -39,7 +39,7 @@ body.overflow-hidden {
     gap: 15px;
 }
 .boutique .head li {
-    background: var(--black-1);
+    background: var(--fzbg-1);
     text-align: center;
     border-radius: 8px;
 }
@@ -77,7 +77,7 @@ body.overflow-hidden {
     border-radius: 12px !important;
 }
 .boutique .head .user .dropdown:hover {
-    background: var(--black-2);
+    background: var(--fzbg-2);
 }
 .boutique .head .user .infos .money {
     display: flex;
@@ -116,7 +116,7 @@ body.overflow-hidden {
     border-radius: 8px;
     font-family: 'Poppins';
     font-weight: 700;
-    background: var(--black-1);
+    background: var(--fzbg-1);
 }
 .boutique .main .list .categorie .products {
     display: flex;
@@ -255,7 +255,7 @@ body.overflow-hidden {
     border-radius: 15px !important;
 }
 .card .subcontent {
-    background: var(--black-3);
+    background: var(--fzbg-3);
     position: absolute;
     bottom: 0px;
     left: 0;
