@@ -8,6 +8,8 @@ export default function Home({ auth }) {
     const categories = props.shop.categories
     const items = props.items
 
+    console.log(items)
+
     return (
         <Layout>
             <Head title="Accueil" />
@@ -28,7 +30,7 @@ export default function Home({ auth }) {
                                         const slug = item.name.toLowerCase()
                                         let colors = [item.color1, item.color2]
                                         {
-                                            if (item.category_id == category.id)
+                                            if (item.shop_type_id == category.id)
                                                 return (
                                                     <Link key={itindex} href={route('showItem', {slug: slugCategory, itemID: item.id})}>
                                                         <div className="card" style={{ background: `linear-gradient(${colors[0]}, ${colors[1]})` }}>
