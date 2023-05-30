@@ -83,7 +83,7 @@ class ItemController extends Controller
     }
 
     public function sendSocketServer($history){
-        $client = new \WebSocket\Client("ws://194.9.172.246:4667/v1/ws/shop/claim", [
+        /*$client = new \WebSocket\Client("ws://194.9.172.246:4667/v1/ws/shop/claim", [
             'headers' => [
                 'Sec-WebSocket-Version' => '13',
                 'origin' => '*',
@@ -93,7 +93,9 @@ class ItemController extends Controller
         $history->fzProfile = getFZProfile();
         $client->send(json_encode($history));
         $client->receive();
-        $client->close();
+        $client->close();*/
+        
+        dd(json_encode($history));
     }
 
 
