@@ -10,5 +10,5 @@ class ShopItems extends Model
     use HasFactory;
     
     protected $connection = "faction";
-    protected $table = "shop__items";
+    protected $table = "economy__shop_item";
 }

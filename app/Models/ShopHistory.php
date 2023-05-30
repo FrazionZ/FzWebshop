@@ -11,7 +11,7 @@ class ShopHistory extends Model
 
 
     protected $connection = "faction";
-    protected $table = "shop__histories";
+    protected $table = "shop__history";
 
     protected $fillable = [
         'uuid',

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::connection('faction')->create('shop__categories', function(Blueprint $table) {
+        Schema::connection('faction')->create('economy__shop_type', function(Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('singular_name');
