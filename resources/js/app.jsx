@@ -10,6 +10,12 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
+
+window.formatterMoney = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+});
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),

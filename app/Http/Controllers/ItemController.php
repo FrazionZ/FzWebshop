@@ -34,42 +34,42 @@ class ItemController extends Controller
         $fzProfile = FactionProfile::where('uuid', '=', $userAuth->uuid)->first();
         $payment = $request->input('type');
         $item = ShopItems::where('id', '=', $request->input('item_id'))->where('is_enable', 1)->where('is_deleted', 0)->first();
-        if($item == null) return redirect()->back()->with("status", $this->toastResponse('error', 'Cette article semble introuvable'));
+        if($item == null) return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Cette article semble introuvable'));
         $category = ShopCategories::where('id', $item->shop_type_id)->where('is_enable', 1)->first();
         if($category == null)  return redirect()->back()->with("status", $this->toastResponse('error', 'Cette article semble introuvable'));
         if($item->multiple_buy == 0 && ShopHistory::where('uuid', '=', $userAuth->uuid)->where('item_id', '=', $item->id)->first() !== null)
-            return redirect()->back()->with("status", $this->toastResponse('error', 'Vous ne pouvez acheter qu\'une seul fois cet article'));
+            return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Vous ne pouvez acheter qu\'une seul fois cet article'));
         if($item->item_requirement !== null){
             $itemRequirement = ShopItems::where('id', '=', $item->item_requirement)->first();
             if(ShopHistory::where('uuid', '=', $userAuth->uuid)->where('item_id', '=', $itemRequirement->id)->first() == null)
-                return redirect()->back()->with("status", $this->toastResponse('error', 'Vous devez acheter l\'item "'.$itemRequirement->name.'" avant celui-ci.'));
+                return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Vous devez acheter l\'item "'.$itemRequirement->name.'" avant celui-ci.'));
         }
         if($payment == "pbs"){
             $moneyOld = $userAuth->money;
             $price = $item->price_pbs;
             if($price <= -1)
-                return redirect()->back()->with("status", $this->toastResponse('error', 'Ce moyen de paiement est désactivé'));
+                return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Ce moyen de paiement est désactivé'));
             if($moneyOld >= $price){
                 $moneyNew = ($moneyOld) - ($price);
                 $userAuth->update(['money' => $moneyNew]);
                 $history = $this->fillHistory($userAuth->uuid, $payment, $item);
                 $this->sendSocketServer($history);
-                return redirect()->back()->with("status", $this->toastResponse('success', 'Votre achat a bien été réalisé, connectez-vous au serveur pour le claim !'));
+                return redirect()->back()->with('result', true)->with("status", $this->toastResponse('success', 'Votre achat a bien été réalisé, connectez-vous au serveur pour le claim !'));
             }else
-                return redirect()->back()->with("status", $this->toastResponse('error', 'Vous n\'avez pas assez de points boutique pour effectuer cette achat !'));
+                return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Vous n\'avez pas assez de points boutique pour effectuer cette achat !'));
         }else if($payment == "coins"){
             $moneyOld = $fzProfile->money;
             $price = $item->price_coins;
             if($price <= -1)
-                return redirect()->back()->with("status", $this->toastResponse('error', 'Ce moyen de paiement est désactivé'));
+                return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Ce moyen de paiement est désactivé'));
             if($moneyOld >= $price){
                 $moneyNew = ($moneyOld) - ($price);
                 $fzProfile->update(['money' => $moneyNew]);
                 $history = $this->fillHistory($userAuth->uuid, $payment, $item);
                 $this->sendSocketServer($history);
-                return redirect()->back()->with("status", $this->toastResponse('success', 'Votre achat a bien été réalisé, connectez-vous au serveur pour le claim !'));
+                return redirect()->back()->with('result', true)->with("status", $this->toastResponse('success', 'Votre achat a bien été réalisé, connectez-vous au serveur pour le claim !'));
             }else
-                return redirect()->back()->with("status", $this->toastResponse('error', 'Vous n\'avez pas assez de coins pour effectuer cette achat !'));
+                return redirect()->back()->with('result', false)->with("status", $this->toastResponse('error', 'Vous n\'avez pas assez de coins pour effectuer cette achat !'));
         }
     }
 

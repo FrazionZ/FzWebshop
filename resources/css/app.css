@@ -1396,6 +1396,22 @@ textarea.form-control.is-invalid {
 }
 
 
+.confirmBuyModal {
+    z-index: 99;
+    position: relative;
+}
+.confirmBuyModal .apply {
+    display: none;
+}
+.confirmBuyModal .apply.open {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+}
+.confirmBuyModal .apply svg {
+    width: 100% !important;
+    height: 14rem !important;
+}
 /* MEDIA QUERIES */
 @media screen and (max-width: 768px)
 {

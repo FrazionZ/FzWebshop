@@ -8,6 +8,17 @@ import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+
+
+window.moneyFormatter = (amount, notDecimal) => {
+    const formmater = new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+    });
+    const af = formmater.format(amount)
+    return (notDecimal) ? af.substring(0, af.length - 2).replace(',00', '') : af.substring(0, af.length - 2)
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

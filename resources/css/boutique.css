@@ -3,11 +3,14 @@ html {
 }
 body {
     background-color: var(--fzbg-4);
-    padding: 30px 60px;
 }
 body.overflow-hidden {
     overflow-x: hidden;
     overflow-y: overlay;
+}
+body #app {
+    
+    padding: 30px 60px;
 }
 .btn {
     font-family: 'Poppins';
@@ -189,6 +192,7 @@ body.overflow-hidden {
     color: white;
     border-radius: 30px;
     padding: 30px;
+    position: relative;
 }
 .boutique .main .pres-item .card .item-name {
     text-align: center;
@@ -266,4 +270,12 @@ body.overflow-hidden {
 .card .content {
     padding: 25px !important;
     width: fit-content;
+}
+.boutique .card.gateway {
+    outline: 0px solid white;
+    transition: all 0.2s linear;
+}
+.boutique .card.gateway:hover {
+    outline: 4px solid #FFFFFF;
+    transform: scale(1.05);
 }

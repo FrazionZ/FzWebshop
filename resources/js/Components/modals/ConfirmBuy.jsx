@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import Modal from 'react-modal';
 import { Link, usePage, useForm, router } from '@inertiajs/react';
 import { motion } from 'framer-motion';
+import FzToast from '../FzToast';
+
+import Lottie from "lottie-react";
+import groovyWalkAnimation from "../../../assets/img/icons/successfully-done.json";
 
 const customStyles = {
     overlay: {
@@ -26,16 +30,6 @@ const customStyles = {
     },
 };
 
-
-const itemVariants = {
-    open: {
-        opacity: 1,
-        y: 0,
-        transition: { type: "spring", stiffness: 300, damping: 24 }
-    },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-}
-
 export default function ConfirmBuy({ isMobile, item, type }) {
 
     const props = usePage().props
@@ -43,7 +37,6 @@ export default function ConfirmBuy({ isMobile, item, type }) {
     const modalTitle = "Confirmation de votre achat";
 
     document.querySelector('body').style.overflowY = open ? "hidden" : "auto"
-
     
     const { data, setData, post, processing, errors } = useForm({
         type: type,
@@ -59,8 +52,13 @@ export default function ConfirmBuy({ isMobile, item, type }) {
             onFinish: (data) => {
             },
             onSuccess: (data) => {
+                if (!data.props.flash.result) return;
+                document.querySelector('.confirmBuyModal form').remove()
+                document.querySelector('.confirmBuyModal .apply').classList.add('open')
             },
-            onError: (data) => { },
+            onError: (data) => {
+                FzToast.error('Une erreur interne est survenue :(')
+            },
         });
     }
 
@@ -74,14 +72,24 @@ export default function ConfirmBuy({ isMobile, item, type }) {
                 style={customStyles}
                 ariaHideApp={true}
                 contentLabel="Modal Promo Code"
-                bodyOpenClassName='w-full promoCodeModal'
-                portalClassName='promoCodeModal'
+                bodyOpenClassName='w-full confirmBuyModal'
+                portalClassName='confirmBuyModal'
             >
                 <form onSubmit={submit} className='flex flex-col gap-6'>
                     <h2 className='title text-3xl text-white'>{modalTitle}</h2>
                     <span className='text-white'>Vous êtes sur le point d'acheter "{item.name}".<br/>Souhaitez-vous vraiement réaliser cette achat de {type == "pbs" ? item.price_pbs : item.price_coins} {type}</span>
                     <button className='btn tiny' disabled={processing} type='submit'>Utiliser</button>
                 </form>
+                <div className="apply">
+                    <Lottie animationData={groovyWalkAnimation} loop={true} />
+                    <div className="col">
+                        <h2 className='text-2xl text-white font-bold text-center'>Votre achat s'est déroulé avec succès !</h2>
+                        <h4 className='text-xl text-white font-semibold text-center'>Connectez-vous en jeu pour récupérer votre achat</h4>
+                    </div>
+                    <div className="flex justify-center">
+                        <button className='btn mt-6' onClick={() => { setOpen(false) }}>Continuer</button>
+                    </div>
+                </div>
             </Modal>
         </>
 

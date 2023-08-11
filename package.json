@@ -19,8 +19,13 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@heroicons/react": "^2.0.18",
         "framer-motion": "^10.10.0",
-        "react-icons": "^4.8.0",
+        "headlessui": "^0.0.0",
+        "heroicons": "^2.0.18",
+        "lottie-react": "^2.4.0",
+        "moment-timezone": "^0.5.43",
+        "react-icons": "^4.9.0",
         "react-modal": "^3.16.1",
         "react-toastify": "^9.1.2"
     }

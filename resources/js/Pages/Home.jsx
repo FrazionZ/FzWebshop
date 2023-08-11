@@ -41,10 +41,10 @@ export default function Home({ auth }) {
                                                                 </div>
                                                                 <div className="prices">
                                                                     {item.price_coins > -1 &&
-                                                                        <span className="package_price_coins">{item.price_coins} Coins</span>
+                                                                        <span className="package_price_coins">{window.moneyFormatter(item.price_coins)} Coins</span>
                                                                     }
                                                                     {item.price_pbs > -1 &&
-                                                                        <span className="package_price_pbs">{item.price_pbs} Pbs</span>
+                                                                        <span className="package_price_pbs">{window.moneyFormatter(item.price_pbs)} Pbs</span>
                                                                     }
                                                                 </div>
                                                             </div>

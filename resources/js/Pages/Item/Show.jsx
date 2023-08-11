@@ -35,7 +35,7 @@ export default function ItemShow(props) {
                                             <>
                                                 { item.price_coins > -1 && item.price_coins > 0 &&
                                                     <div className="price">
-                                                        <span className="text">{ item.price_coins } Coins</span>
+                                                        <span className="text">{ window.moneyFormatter(item.price_coins) } Coins</span>
                                                         <ConfirmBuy item={item} type="coins" />
                                                     </div>
                                                 }
@@ -45,7 +45,7 @@ export default function ItemShow(props) {
                                             <>
                                                 { item.price_pbs > -1 && item.price_pbs > 0 &&
                                                     <div className="price">
-                                                        <span className="text">{ item.price_pbs } Points Boutique</span>
+                                                        <span className="text">{ window.moneyFormatter(item.price_pbs) } Points Boutique</span>
                                                         <ConfirmBuy item={item} type="pbs" />
                                                     </div>
                                                 }
